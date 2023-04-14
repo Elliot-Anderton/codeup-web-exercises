@@ -33,6 +33,7 @@ console.log(helloMessage);
 
 let myName = 'Elliot';
 console.log(sayHello(myName))
+
 // Don't modify the following line, it generates a random number between 1 and 3
 // and stores it in a variable named random
 var random = Math.floor((Math.random() * 3) + 1);
@@ -58,8 +59,7 @@ var random = Math.floor((Math.random() * 3) + 1);
 function isTwo(sumnum) {
     return sumnum === 2;
 }
-console.log(random);
-console.log(isTwo(random));
+console.log(random + ' is Two: ' + isTwo(random));
 
 /**
  * TODO:
@@ -84,7 +84,9 @@ function calculateTip(tipPercent, billAmount) {
  * then display the dollar amount they should tip
  */
 
-alert('The tip amount is $' + calculateTip(prompt('What percentage would you like to tip?'), prompt('What is the amount on the bill')));
+let willTip = prompt('What percentage would you like to tip (a number between 0 and 1?');
+let billTotal = prompt('What is the amount on the bill?');
+alert('The tip amount is $' + calculateTip(willTip, billTotal));
 
 /**
  * TODO:
@@ -107,7 +109,7 @@ function applyDiscount(prePrice, disctPercnt) {
 }
 
 let orginalTotal = prompt('What is the original price?');
-let disctAmount = prompt('What is the discount amount (between 0 and 1)?');
+let disctAmount = prompt('What is the discount amount (a number between 0 and 1)?');
 alert('The final price is $' + applyDiscount(orginalTotal, disctAmount));
 
 })();
