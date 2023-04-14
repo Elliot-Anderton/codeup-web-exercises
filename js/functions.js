@@ -1,3 +1,4 @@
+(function(){
 "use strict";
 
 /**
@@ -8,6 +9,9 @@
  * Example
  * > sayHello("codeup") // returns "Hello, codeup!"
  */
+function sayHello(name) {
+    return 'Hello ' + name + '!';
+}
 
 /**
  * TODO:
@@ -17,6 +21,9 @@
  * console.log 'helloMessage' to check your work
  */
 
+let helloMessage = sayHello('Elliot');
+console.log(helloMessage);
+
 /**
  * TODO:
  * Store your name as a string in a variable named 'myName', and pass that
@@ -24,6 +31,8 @@
  * console.
  */
 
+let myName = 'Elliot';
+console.log(sayHello(myName))
 // Don't modify the following line, it generates a random number between 1 and 3
 // and stores it in a variable named random
 var random = Math.floor((Math.random() * 3) + 1);
@@ -46,6 +55,12 @@ var random = Math.floor((Math.random() * 3) + 1);
  * number)
  */
 
+function isTwo(sumnum) {
+    return sumnum === 2;
+}
+console.log(random);
+console.log(isTwo(random));
+
 /**
  * TODO:
  * Create a function named 'calculateTip' to calculate a tip on a bill at a
@@ -58,12 +73,18 @@ var random = Math.floor((Math.random() * 3) + 1);
  * > calculateTip(0.15, 33.42) // returns 5.013
  */
 
+function calculateTip(tipPercent, billAmount) {
+    return (tipPercent * billAmount).toFixed(2);
+}
+
 /**
  * TODO:
  * Use prompt and alert in combination with your calculateTip function to
  * prompt the user for the bill total and a percentage they would like to tip,
  * then display the dollar amount they should tip
  */
+
+alert('The tip amount is $' + calculateTip(prompt('What percentage would you like to tip?'), prompt('What is the amount on the bill')));
 
 /**
  * TODO:
@@ -79,3 +100,14 @@ var random = Math.floor((Math.random() * 3) + 1);
  *
  * > applyDiscount(45.99, 0.12) // 40.4712
  */
+
+function applyDiscount(prePrice, disctPercnt) {
+    let postPrice = prePrice - (prePrice * disctPercnt);
+    return postPrice.toFixed(2);
+}
+
+let orginalTotal = prompt('What is the original price?');
+let disctAmount = prompt('What is the discount amount (between 0 and 1)?');
+alert('The final price is $' + applyDiscount(orginalTotal, disctAmount));
+
+})();
