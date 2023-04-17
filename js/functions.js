@@ -76,6 +76,9 @@ console.log(random + ' is Two: ' + isTwo(random));
 function calculateTip(tipPercent, billAmount) {
     return (tipPercent * billAmount).toFixed(2);
 }
+console.log(calculateTip(0.20, 20));
+console.log(calculateTip(0.25, 25.50));
+console.log(calculateTip(0.15, 33.42));
 
 /**
  * TODO:
@@ -84,8 +87,8 @@ function calculateTip(tipPercent, billAmount) {
  * then display the dollar amount they should tip
  */
 
-let willTip = prompt('What percentage would you like to tip (a number between 0 and 1?');
-let billTotal = prompt('What is the amount on the bill?');
+let willTip = parseFloat(prompt('What percentage would you like to tip (a number between 0 and 1?'));
+let billTotal = parseFloat(prompt('What is the amount on the bill?'));
 alert('The tip amount is $' + calculateTip(willTip, billTotal));
 
 /**
@@ -108,8 +111,8 @@ function applyDiscount(prePrice, disctPercnt) {
     return postPrice.toFixed(2);
 }
 
-let orginalTotal = prompt('What is the original price?');
-let disctAmount = prompt('What is the discount amount (a number between 0 and 1)?');
+let orginalTotal = parseFloat(prompt('What is the original price?'));
+let disctAmount = parseFloat(prompt('What is the discount amount (a number between 0 and 1)?'));
 alert('The final price is $' + applyDiscount(orginalTotal, disctAmount));
 
 })();
