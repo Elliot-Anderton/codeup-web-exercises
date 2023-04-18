@@ -185,26 +185,12 @@ alert('Your price after discount is ' + calculateTotal(luckyNumber, ogBill) + '!
 //         }
 // }
 
-function getnumber() {
-    let enterNumber = confirm('Would you like to enter a number?');
-    if (enterNumber) {
-        let myNumber = parseFloat(prompt('Please enter your number'));
-            if (!isNaN(myNumber)) {
-                return myNumber;
-            } else {
-                alert('incorrect input data type!');
-                getnumber();
-            }
-    }
-}
-
 function isPositive(num) {
     if(num % 2 === 0) {
         return ('Your number is even!');
     } else {
          return ('Your number is odd!');
     }
-
 }
 
 function isEven(num) {
@@ -221,6 +207,18 @@ function numberFunction(num) {
     alert(isEven(num));
 }
 
-numberFunction(getnumber())
+function getnumber() {
+    if (confirm('Would you like to enter a number?')) {
+        let myNumber = parseFloat(prompt('Please enter your number'));
+        if (!isNaN(myNumber)) {
+            numberFunction(myNumber);
+        } else {
+            alert('incorrect input data type!');
+            getnumber();
+        }
+    }
+}
+
+getnumber();
 
 })();
