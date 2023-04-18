@@ -165,24 +165,62 @@ alert('Your price after discount is ' + calculateTotal(luckyNumber, ogBill) + '!
  * HINT: The way we prompt for a value could be improved
  */
 
-let enterNumber = confirm('Would you like to enter a number?');
-if (enterNumber) {
-    let myNumber = parseFloat(prompt('Please enter your number'));
-        if(!isNaN(myNumber)) {
-            if(myNumber % 2 === 0) {
-                alert('Your number is even!');
+// let enterNumber = confirm('Would you like to enter a number?');
+// if (enterNumber) {
+//     let myNumber = parseFloat(prompt('Please enter your number'));
+//         if(!isNaN(myNumber)) {
+//             if(myNumber % 2 === 0) {
+//                 alert('Your number is even!');
+//             } else {
+//                 alert('Your number is odd!');
+//             }
+//             alert('Your Number + 100 is ' + (myNumber + 100) + '!');
+//             if(myNumber >= 0) {
+//                 alert('Your number is positive!');
+//             } else {
+//                 alert('Your number is negative!');
+//             }
+//         } else {
+//             alert('incorrect input data type!');
+//         }
+// }
+
+function getnumber() {
+    let enterNumber = confirm('Would you like to enter a number?');
+    if (enterNumber) {
+        let myNumber = parseFloat(prompt('Please enter your number'));
+            if (!isNaN(myNumber)) {
+                return myNumber;
             } else {
-                alert('Your number is odd!');
+                alert('incorrect input data type!');
+                getnumber();
             }
-            alert('Your Number + 100 is ' + (myNumber + 100) + '!');
-            if(myNumber >= 0) {
-                alert('Your number is positive!')
-            } else {
-                alert('Your number is negative!')
-            }
-        } else {
-            alert('incorrect input data type!')
-        }
+    }
 }
+
+function isPositive(num) {
+    if(num % 2 === 0) {
+        return ('Your number is even!');
+    } else {
+         return ('Your number is odd!');
+    }
+
+}
+
+function isEven(num) {
+    if(num >= 0) {
+        return ('Your number is positive!');
+    } else {
+        return ('Your number is negative!');
+    }
+}
+
+function numberFunction(num) {
+    alert(isPositive(num));
+    alert('Your Number + 100 is ' + (num + 100) + '!');
+    alert(isEven(num));
+}
+
+numberFunction(getnumber())
 
 })();
