@@ -1,5 +1,5 @@
-
-"use strict"
+(function(){
+"use strict";
 
 function showMultiplicationTable(num) {
 	for (let i = 1; i < 11; i++) {
@@ -8,7 +8,7 @@ function showMultiplicationTable(num) {
 }
 
 for (let i = 0; i < 10; i++) {
-	let sumnum = Math.floor(Math.random() * 180 + 20);
+	let sumnum = Math.floor(Math.random() * 180) + 20;
 	let isEven = sumnum % 2 === 0
 
 	if (isEven) {
@@ -30,3 +30,4 @@ for (let i = 100; i > 0; i -= 5) {
 	console.log(i);
 }
 
+})();
