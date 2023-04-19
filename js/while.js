@@ -11,12 +11,15 @@
 
 	do {
 		let thisPurchase = Math.floor(Math.random() * 5) + 1;
-		if (conesSold + thisPurchase > allCones) {
-			console.log(`I cannot sell ${thisPurchase} cones. I only have ${allCones - conesSold} left.`);
+		let conesLeft = allCones - conesSold;
+
+		if (thisPurchase > conesLeft) {
+			console.log(`I cannot sell ${thisPurchase} cones. I only have ${conesLeft} left.`);
 			continue;
 		}
 		console.log(thisPurchase + ` cones sold!`);
 		conesSold += thisPurchase;
+
 	} while (conesSold < allCones)
 
 	console.log(`Yay I sold them all!`);

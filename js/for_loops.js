@@ -7,9 +7,11 @@ function showMultiplicationTable(num) {
 	}
 }
 
+showMultiplicationTable(4);
+
 for (let i = 0; i < 10; i++) {
 	let sumnum = Math.floor(Math.random() * 180) + 20;
-	let isEven = sumnum % 2 === 0
+	let isEven = sumnum % 2 === 0;
 
 	if (isEven) {
 		console.log(sumnum + " is even");
@@ -20,7 +22,7 @@ for (let i = 0; i < 10; i++) {
 
 for (let i = 1, k = i.toString(); i < 10; i++) {
 	for (let j = 1; j < i; j++) {
-		k += i.toString()
+		k += i.toString();
 	}
 	console.log(k);
 	k = (i + 1).toString();
