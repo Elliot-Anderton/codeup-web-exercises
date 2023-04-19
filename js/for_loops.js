@@ -9,14 +9,14 @@ function showMultiplicationTable(num) {
 
 for (let i = 0; i < 10; i++) {
 	let sumnum = Math.floor(Math.random() * 180 + 20);
-	if (sumnum % 2 === 0) {
+	let isEven = sumnum % 2 === 0
+
+	if (isEven) {
 		console.log(sumnum + " is even");
 	} else {
 		console.log(sumnum + " is odd");
 	}
 }
-
-
 
 for (let i = 1, k = i.toString(); i < 10; i++) {
 	for (let j = 1; j < i; j++) {
@@ -29,9 +29,4 @@ for (let i = 1, k = i.toString(); i < 10; i++) {
 for (let i = 100; i > 0; i -= 5) {
 	console.log(i);
 }
-
-
-
-
-
 
