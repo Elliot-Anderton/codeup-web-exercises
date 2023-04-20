@@ -22,6 +22,6 @@
 
 	} while (conesSold < allCones)
 
-	console.log(`Yay I sold them all!`);
+	console.log(`Yay, all ${conesSold} cones sold!`);
 
 })()
