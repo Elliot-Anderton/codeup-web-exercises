@@ -24,6 +24,10 @@ function identiy(input) {
 	return input;
 }
 // 	Make a function named isFive(input)
+
+function isFive(input) {
+	return input === 5;
+}
 // Make a function named addFive(input) that adds five to some input.
 
 function addFive(num) {
@@ -50,11 +54,27 @@ function isMultipleofThreeandFive(num) {
 	return isMultipleofThree(num) && isMultipleofFive(num);
 }
 // Make a function named isMultipleOf(target, n) which checks if target is evenly divisible by n
+function isMultipleOf(target, n) {
+	return  target % n === 0 && typeof target != "boolean";
+}
 
 // Make a function named isTrue(boolean)
+function isTrue(boolean) {
+	return boolean === true;
+}
+
 // Make a function named isFalse(boolean)
+function isFalse(boolean) {
+	return boolean !== true;
+}
 // Make a function named isTruthy(input), remember that values other than true will behave like true
+function isTruthy(input) {
+	return input == true;
+}
 // Make a function named isFalsy(input), remember that values other than false behave like false
+function isFalsy(input) {
+	return 
+}
 // Make a function named isVowel(letter)
 // Make a function named isConsonant(letter)
 // Make a function named isCapital(letter)
@@ -90,3 +110,40 @@ function isMultipleofThreeandFive(num) {
 // Write a function called reverseString(string) that reverses a string
 // Make a function named absoluteValue(number) that returns the absolute value of a number.
 // 	Make a function named rollDice(sides) that takes in an argument containing the number of sides the die should have. Generate a random number between 1 up to and including the number of sides.
+
+// Write a for loop that prints the even numbers from 0 to 20 to the console.
+// 	Write a while loop that counts down from 10 to 0 and prints each number to the console.
+// 	Write a do-while loop that prompts the user to enter a number between 1 and 5. The loop should continue to prompt the user until they enter a valid number.
+// 	Write a for loop that calculates the sum of the numbers from 1 to 100 and prints the result to the console.
+// 	Write a while loop that prompts the user to enter their name. The loop should continue to prompt the user until they enter a non-empty string.
+// 	Write a for loop that iterates over an array of strings and prints each string to the console.
+// 	Write a for loop that iterates over an object and prints each key-value pair to the console.
+// 	Write a while loop that generates random numbers between 1 and 10 until it generates a number greater than 8. The loop should print each generated number to the console.
+// 	Write a for loop that iterates over an array of numbers and prints only the even numbers to the console.
+
+// Create a function, willLoginUser() that takes in a username string, password string, user age, a boolean indicating if they are an admin.
+//
+// 	The function will return true if the username is not the same as the password and the user is at least 18 years old. If the user is an admin, they do not have to be a certain age but the password must still not match the username.
+
+
+
+
+function willLoginUser(usnm, psswd, age, admin) {
+	let willLogin = false;
+	if (!psswd.includes(usnm)) {
+		if (age >= 18 || admin === true){
+			willLogin = true;
+		}
+	}
+	return willLogin;
+}
+
+function getLogin() {
+	let oldnuff = parseFloat(prompt(`What is the users age?`));
+	let isadmin = confirm(`Is user an admin?`);
+	let username = prompt(`Please enter your username`);
+	let password = prompt(`Please enter your password`);
+
+
+	willLoginUser(username, password, oldnuff, isadmin);
+}
