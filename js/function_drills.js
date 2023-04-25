@@ -244,83 +244,118 @@ function getLogin() {
 // Write a function named remainder  that will accept two arguments and return the remainder
 // of a division between the two values (the first divided by the second). If either argument is not a
 // number, the function should return false .
+function remainder(a, b) {
+	theRemainder = false;
+	if (typeof a === "number" && typeof b === "number") {
+		theRemainder = a % b;
+	}
+	return theRemainder;
+}
 
-
-// 	Consider the following test cases:
-// 	remainder(21,7) // returns 0
-// remainder(-34/3) // returns -1
-// remainder(144, -11) // returns 1
-// remainder(-14, "2") // returns false
-// remainder("36", 9) // returns false
-// remainder("44", "-3") // returns false
-// remainder("Jeff", "Geoff") // returns false
-// remainder(false, true) // returns false
-// remainder() // returns false
+	// Consider the following test cases:
+// console.log(remainder(21, 7)); // returns 0
+// console.log(remainder(-34, 3)); // returns -1
+// console.log(remainder(144, -11)); // returns 1
+// console.log(remainder(-14, "2")); // returns false
+// console.log(remainder("36", 9)); // returns false
+// console.log(remainder("44", "-3")); // returns false
+// console.log(remainder("Jeff", "Geoff")); // returns false
+// console.log(remainder(false, true)); // returns false
+// console.log(remainder()); // returns false
 
 
 // Write a function named containsAce  that takes in an argument and returns true  if the
 // 	argument passed is a string that contains the sequence of characters "ace"  somewhere
 // within the string. This check should be case insensitive. The function should return false if the
 // 	argument is not a string, or if it doesn't contain "ace"  somewhere in the string.
+function containsAce(string) {
+	let isAce = false;
+	if (typeof string === 'string') {
+		input = lowerCase(string);
+		isAce = input.includes('ace');
+	}
+	return isAce;
+}
+
 // Consider the following test cases:
-// containsAce("place") // returns true
-// containsAce("ACE Hardware") // returns true
-// containsAce("PaLaCe!1!") // returns true
-// containsAce("camel") // returns false
-// containsAce("CACHE") // returns false
-// containsAce("phase 1") // returns false
-// containsAce("bass") // returns false
-// containsAce(["a","c","e"]) // returns false
-// containsAce(135) // returns false
-// containsAce(true) // returns false
-// containsAce() // returns false
+// console.log(containsAce("place")); // returns true
+// console.log(containsAce("ACE Hardware")); // returns true
+// console.log(containsAce("PaLaCe!1!")); // returns true
+// console.log(containsAce("camel")); // returns false
+// console.log(containsAce("CACHE")); // returns false
+// console.log(containsAce("phase 1")); // returns false
+// console.log(containsAce("bass")); // returns false
+// console.log(containsAce(["a", "c", "e"])); // returns false
+// console.log(containsAce(135)); // returns false
+// console.log(containsAce(true)); // returns false
+// console.log(containsAce()); // returns false
 
 
 // Write a function named divisibleBy5  that accepts an argument returns true  is the
 // argument a number that is evenly divisible by 5. If the argument provided is either not a number,
 // 	or is not evenly divisibile by 5, the function should return false .
+function divisibleBy5(n) {
+	return n % 5 === 0 && typeof n === 'number';
+}
+
 // 	Consider the following test cases:
-// 	divisibleBy5(255) // returns true
-// divisibleBy5(-100) // returns true
-// divisibleBy5(5) // returns true
-// divisibleBy5(0) // returns true
-// divisibleBy5("80") // returns false
-// divisibleBy5(6) // returns false
-// divisibleBy5(-99) // returns false
-// divisibleBy5(false) // returns false
-// divisibleBy5([5.10,15]) // returns false
-// divisibleBy5() // returns false
+// console.log(divisibleBy5(255)) // returns true
+// console.log(divisibleBy5(-100)) // returns true
+// console.log(divisibleBy5(5)) // returns true
+// console.log(divisibleBy5(0)) // returns true
+// console.log(divisibleBy5("80")) // returns false
+// console.log(divisibleBy5(6)) // returns false
+// console.log(divisibleBy5(-99)) // returns false
+// console.log(divisibleBy5(false)) // returns false
+// console.log(divisibleBy5([5.10,15])) // returns false
+// console.log(divisibleBy5()) // returns false
 
 
 // Write a function named averageThreeNumbers  that accepts three arguments, and returns
 // the average (mean) of the three arguments if all three arguments are numbers. If any/all of the
 // three arguments are not a number, or if there are fewer than three arguments, the function
 // should return false .
+function averageThreeNumbers(num1, num2, num3) {
+	let average = false;
+	if (typeof num1 === 'number' && typeof num2 === 'number' && typeof num3 === 'number') {
+		average = (num1 + num2 + num3) / 3
+	}
+	return average;
+}
+
 // 	Consider the following test cases:
-// averageThreeNumbers(10,5,15) // returns 10
-// averageThreeNumbers(19,44,-8) // returns 18.333333333333332
-// averageTheNumbers("two", 3, 1) // returns false
-// averageThreeNumbers(2, "3", 1) // returns false
-// averageThreeNumbers(6,7,"8") // returns false
-// averageThreeNumbers("duck", "duck", "goose") // returns false
-// averageThreeNumbers(true, false, true) // returns false
-// averageThreeNumbers(22,24) // returns false
-// averageThreeNumbers() // returns false
+// console.log(averageThreeNumbers(10,5,15)) // returns 10
+// console.log(averageThreeNumbers(19,44,-8)) // returns 18.333333333333332
+// console.log(averageThreeNumbers("two", 3, 1)) // returns false
+// console.log(averageThreeNumbers(2, "3", 1)) // returns false
+// console.log(averageThreeNumbers(6,7,"8")) // returns false
+// console.log(averageThreeNumbers("duck", "duck", "goose")) // returns false
+// console.log(averageThreeNumbers(true, false, true)) // returns false
+// console.log(averageThreeNumbers(22,24)) // returns false
+// console.log(averageThreeNumbers()) // returns false
 
 
 // Write a function named stringsAreSameLength  that accepts two arguments and returns
 // true  if both arguments are strings of the same length. If either argument is not a string, has
 // fewer than two arguments, or if the two strings are of different lengths, the function should return
 // false .
+function stringsAreSameLength(string1, string2) {
+	let isLength = false;
+	if (typeof string1 === 'string' && typeof string2 === 'string') {
+		isLength = string1.length === string2.length
+	}
+	return isLength;
+}
+
 // 	Consider the following test cases:
-// 	stringsAreSameLength("duck", "code") // returns true
-// stringsAreSameLength("Buick", "CAMEL") // returns true
-// stringsAreSameLength("ERROR_404", "file-miss") // returns true
-// stringsAreSameLength("ERROR_CODE", "1234567890") // returns true
-// stringsAreSameLength("Oops", 1234) // returns false
-// stringsAreSameLength(22, "huh...") // returns false
-// stringsAreSameLength("Camel", "Case") // returns false
-// stringsAreSameLength(81,34) // returns false
-// stringsAreSameLength("ace", [1,2,3]) // returns false
-// stringsAreSameLength("fisherman") // returns false
-// stringsAreSameLength() // returns false
+// console.log(stringsAreSameLength("duck", "code")) // returns true
+// console.log(stringsAreSameLength("Buick", "CAMEL")) // returns true
+// console.log(stringsAreSameLength("ERROR_404", "file-miss")) // returns true
+// console.log(stringsAreSameLength("ERROR_CODE", "1234567890")) // returns true
+// console.log(stringsAreSameLength("Oops", 1234)) // returns false
+// console.log(stringsAreSameLength(22, "huh...")) // returns false
+// console.log(stringsAreSameLength("Camel", "Case")) // returns false
+// console.log(stringsAreSameLength(81,34)) // returns false
+// console.log(stringsAreSameLength("ace", [1,2,3])) // returns false
+// console.log(stringsAreSameLength("fisherman")) // returns false
+// console.log(stringsAreSameLength()) // returns false
