@@ -194,15 +194,53 @@ function radiansToDegrees(number) {
 
 }
 // Make a function named isBlank(input) that determines if a given input is spaces, newline characters, or tabs.
+function isBlank(input) {
+
+}
+
 // 	Make a function named trim(string) that removes empty spaces before and after the input.
+function trim(string) {
+	return input.trim();
+}
+
 // 	Make a function named areEqual(input1, input2) that returns if both inputs have the same value
+function areEqual(input1, input2) {
+	return input1 == input2;
+}
+
 // Make a function named areIdentical(input1, input2) that returns if both inputs are same value and data type.
+function areIdentical(input1, input2) {
+	return input1 === input2;
+}
+
 // 	Make a function named not(input) returns the input with a flipped boolean
+function not(input) {
+	return !input;
+}
+
 // Make a function named notNot(input) that the negation of the negation of the input.
+function notNot(input) {
+	return !!input;
+}
+
 // 	Make a function named and(predicate1, predicate2) that returns the logical operation of AND
+function and(predicate1, predicate2) {
+	return predicate1 && predicate2;
+}
+
 // Make a function named or(predicate1, predicate2) that returns the logical operation of OR
+function or(predicate1, predicate2) {
+	return predicate1 || predicate2
+}
 // Write a function called reverseString(string) that reverses a string
+function reverseString(string) {
+	return string.reverse;
+}
+
 // Make a function named absoluteValue(number) that returns the absolute value of a number.
+function absoluteValue(number) {
+
+}
 // 	Make a function named rollDice(sides) that takes in an argument containing the number of sides the die should have. Generate a random number between 1 up to and including the number of sides.
 
 // Write a for loop that prints the even numbers from 0 to 20 to the console.
@@ -252,6 +290,16 @@ function remainder(a, b) {
 	return theRemainder;
 }
 
+// function remainder(a, b) {
+// 	if(!isNaN(a)) {
+// 		if(!isNaN(b)) {
+// 			return a % b;
+// 		} else {
+// 			return false;
+// 		}
+// 	}
+// }
+
 	// Consider the following test cases:
 // console.log(remainder(21, 7)); // returns 0
 // console.log(remainder(-34, 3)); // returns -1
@@ -271,8 +319,10 @@ function remainder(a, b) {
 function containsAce(string) {
 	let isAce = false;
 	if (typeof string === 'string') {
-		input = lowerCase(string);
-		isAce = input.includes('ace');
+		input = string.toLowerCase();
+		if (input.indexOf('ace') !== -1) {
+			isAce = true;
+		}
 	}
 	return isAce;
 }
