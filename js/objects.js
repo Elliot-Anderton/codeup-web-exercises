@@ -28,9 +28,12 @@
      * Example
      * > console.log(person.sayHello()) // "Hello from Rick Sanchez!"
      */
-    person.sayHello = `Hello from ` + person.firstName + ` ` + person.lastName;
+    function sayHello() {
+        return `Hello from ${this.firstName} ${this.lastName}`;
+    }
+    person.sayHello = sayHello;
 
-    console.log(person.sayHello)
+    console.log(person.sayHello())
 
     /** TODO:
      * HEB has an offer for the shoppers that buy products amounting to
@@ -67,6 +70,7 @@
         console.log(`Amount discounted is $${discountAmount}`);
         console.log(`${shopper.name} owes $${finalBill}`)
     })
+
     /** TODO:
      * Create an array of objects that represent books and store it in a
      * variable named `books`. Each object should have a title and an author
@@ -80,31 +84,36 @@
      * > console.log(books[0].author.lastName) // "Adams"
      */
     // let books = [
-    //     {title: `The Maze Runner`,
+    //     {
+    //         title: `The Maze Runner`,
     //         author: {
     //         firstName: `James`,
     //         lastName: `Dashner`,
     //         }
     //     },
-    //     {title: `Living Books: Experiments in PostHumanities`,
+    //     {
+    //         title: `Living Books: Experiments in PostHumanities`,
     //         author: {
     //             firstName: 'Janneke',
     //             lastName: `Adema`,
     //         }
     //     },
-    //     {title: `Bee Basics: An Introduction To Our Native Bees`,
+    //     {
+    //         title: `Bee Basics: An Introduction To Our Native Bees`,
     //         author: {
     //             firstName: `Stephen`,
     //             lastName: `Buchmann`,
     //         }
     //     },
-    //     {title: `The Book`,
+    //     {
+    //         title: `The Book`,
     //         author: {
     //             firstName: `Amaranth`,
     //             lastName: `Borsuk`,
     //         }
     //     },
-    //     {title: `Three Lines in a Circle: The Exciting Life of the Peace`,
+    //     {
+    //         title: `Three Lines in a Circle: The Exciting Life of the Peace`,
     //         author: {
     //             firstName: `Micheal`,
     //             lastName: `Long`,
@@ -137,9 +146,9 @@
      *      ...
      */
     // books.forEach(function (book) {
-    //     console.log(`Book #${books.indexOf(book) + 1}`);
-    //     console.log(`Title: ${book.title}`);
-    //     console.log(`Author: ${book.author.firstName} ${book.author.lastName}`);
+    //     console.log(`Book #${books.indexOf(book) + 1} \nTitle: ${book.title} \nAuthor: ${book.author.firstName} ${book.author.lastName}`);
+        // console.log(`Title: ${book.title}`);
+        // console.log(`Author: ${book.author.firstName} ${book.author.lastName}`);
     // })
 
     /**
