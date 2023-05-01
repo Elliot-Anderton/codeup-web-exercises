@@ -200,7 +200,7 @@ function isBlank(input) {
 
 // 	Make a function named trim(string) that removes empty spaces before and after the input.
 function trim(string) {
-	return input.trim();
+	return string.trim();
 }
 
 // 	Make a function named areEqual(input1, input2) that returns if both inputs have the same value
