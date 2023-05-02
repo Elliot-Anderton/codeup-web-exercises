@@ -17,11 +17,35 @@ function findFactors(num) {
 	return divisibleBy;
 }
 
-console.log(findFactors(6)); // returns [1,2,3,6];
-console.log(findFactors(16)); // returns [1,2,4,8,16];
-console.log(findFactors(0)); // returns [];
-console.log(findFactors(true)); // returns false;
-console.log(findFactors("13")); // returns false;
-console.log(findFactors([54,72,144])); // returns false;
-console.log(findFactors({value: 64})); // returns false;
-console.log(findFactors()); // returns false;
+// console.log(findFactors(6)); // returns [1,2,3,6];
+// console.log(findFactors(16)); // returns [1,2,4,8,16];
+// console.log(findFactors(0)); // returns [];
+// console.log(findFactors(true)); // returns false;
+// console.log(findFactors("13")); // returns false;
+// console.log(findFactors([54,72,144])); // returns false;
+// console.log(findFactors({value: 64})); // returns false;
+// console.log(findFactors()); // returns false;
+
+// Write a function that takes in a string and counts the instances of the letter 'e' within the argument. The count should be case insensitive. If the string does not contain any 'e's it should return 0. If the argument is not a string it should return false.
+
+function countEs(string) {
+	let count = 0;
+	if( typeof string === 'string') {
+		string = string.toLowerCase();
+		for (let i = 0; i < string.length; i++) {
+			if (string[i] === 'e') {
+				count++
+			}
+		}
+	} else {
+		count = false;
+	}
+	return count;
+}
+
+console.log(countEs("Ease")); // returns 2;
+console.log(countEs("teleconference")); // returns 5;
+console.log(countEs("TOM")); // returns 0;
+console.log(countEs(true)); // returns false;
+console.log(countEs(['e', 'E'])); // returns false;
+console.log(countEs()); // returns false;
