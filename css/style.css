@@ -1,4 +1,57 @@
+body {
+    background-image: url("../img/irongrip.png");
+    background-size: cover;
+}
+
+* {
+    font-family: "Roboto Light", sans-serif;
+    color: sandybrown;
+}
+
 .fancy-header {
-    color: purple;
+    color: brown;
     text-decoration: underline;
+}
+
+#main-heading {
+    margin: 50px auto;
+    width: 500px;
+    padding: 10px;
+}
+
+h2 {
+    color: olivedrab;
+    text-decoration: underline;
+}
+
+ul {
+    list-style: square;
+}
+
+ol {
+    list-style: upper-roman;
+}
+
+footer {
+    color: lemonchiffon;
+}
+
+table, th, td {
+    border: 1px solid;
+    width: 25%;
+    color: darkgoldenrod;
+}
+
+th {
+    background: crimson;
+}
+
+a {
+    color: firebrick;
+    text-decoration: none;
+}
+
+
+a:hover {
+    color: cadetblue;
 }
