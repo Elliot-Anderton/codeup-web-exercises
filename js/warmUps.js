@@ -34,7 +34,7 @@ function countEs(string) {
 		string = string.toLowerCase();
 		for (let i = 0; i < string.length; i++) {
 			if (string[i] === 'e') {
-				count++
+				count++;
 			}
 		}
 	} else {
@@ -43,9 +43,27 @@ function countEs(string) {
 	return count;
 }
 
-console.log(countEs("Ease")); // returns 2;
-console.log(countEs("teleconference")); // returns 5;
-console.log(countEs("TOM")); // returns 0;
-console.log(countEs(true)); // returns false;
-console.log(countEs(['e', 'E'])); // returns false;
-console.log(countEs()); // returns false;
+// console.log(countEs("Ease")); // returns 2;
+// console.log(countEs("teleconference")); // returns 5;
+// console.log(countEs("TOM")); // returns 0;
+// console.log(countEs(true)); // returns false;
+// console.log(countEs(['e', 'E'])); // returns false;
+// console.log(countEs()); // returns false;
+
+function containsE(string) {
+	let isE = false;
+	if(typeof string === 'string') {
+		string = string.toLowerCase();
+		if (string.indexOf(`e`) !== -1) {
+				isE = true;
+		}
+	}
+	return isE;
+}
+
+console.log(containsE("Ease")); // returns 2;
+console.log(containsE("teleconference")); // returns 5;
+console.log(containsE("TOM")); // returns 0;
+console.log(containsE(true)); // returns false;
+console.log(containsE(['e', 'E'])); // returns false;
+console.log(containsE()); // returns false;
