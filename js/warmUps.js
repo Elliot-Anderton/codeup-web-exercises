@@ -61,9 +61,25 @@ function containsE(string) {
 	return isE;
 }
 
-console.log(containsE("Ease")); // returns 2;
-console.log(containsE("teleconference")); // returns 5;
-console.log(containsE("TOM")); // returns 0;
-console.log(containsE(true)); // returns false;
-console.log(containsE(['e', 'E'])); // returns false;
-console.log(containsE()); // returns false;
+// console.log(containsE("Ease")); // returns 2;
+// console.log(containsE("teleconference")); // returns 5;
+// console.log(containsE("TOM")); // returns 0;
+// console.log(containsE(true)); // returns false;
+// console.log(containsE(['e', 'E'])); // returns false;
+// console.log(containsE()); // returns false;
+
+function fizzBuzz() {
+	for(let i = 0; i < 100; i++) {
+		if(i % 3 === 0 && i % 5 === 0) {
+			console.log(`fizzBuzz`);
+		} else if(i % 5 === 0) {
+			console.log(`buzz`);
+		} else if(i % 3 === 0) {
+			console.log(`fizz`);
+		} else {
+			console.log(i);
+		}
+	}
+}
+
+// fizzBuzz()
