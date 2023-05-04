@@ -23,17 +23,22 @@ h2 {
     color: olivedrab;
     text-decoration: underline;
 }
-
 ul {
     list-style: square;
 }
-
 ol {
     list-style: upper-roman;
 }
-
+.container {
+    float: left;
+    width: calc(33.3% - 1em);
+    margin: .5em;
+}
 footer {
     color: lemonchiffon;
+}
+.container2 {
+    clear: both;
 }
 
 table, th, td {
@@ -54,4 +59,7 @@ a {
 
 a:hover {
     color: cadetblue;
+}
+section {
+    overflow: auto;
 }
