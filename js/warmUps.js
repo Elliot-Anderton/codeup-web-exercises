@@ -68,14 +68,42 @@ function containsE(string) {
 // console.log(containsE(['e', 'E'])); // returns false;
 // console.log(containsE()); // returns false;
 
+// function fizzBuzz() {
+// 	for(let i = 0; i < 100; i++) {
+// 		if(i % 3 === 0 && i % 5 === 0) {
+// 			console.log(`fizzBuzz`);
+// 		} else if(i % 5 === 0) {
+// 			console.log(`buzz`);
+// 		} else if(i % 3 === 0) {
+// 			console.log(`fizz`);
+// 		} else {
+// 			console.log(i);
+// 		}
+// 	}
+// }
+
+// fizzBuzz()
+
+function isFizz(num) {
+	let fizzVar = ``;
+	if (num % 3 === 0) {
+		fizzVar = `fizz`;
+	}
+	return fizzVar;
+}
+
+function isBuzz(num) {
+	let buzzVar = ``;
+	if (num % 5 === 0) {
+		buzzVar = `Buzz`;
+	}
+	return buzzVar;
+}
 function fizzBuzz() {
-	for(let i = 0; i < 100; i++) {
-		if(i % 3 === 0 && i % 5 === 0) {
-			console.log(`fizzBuzz`);
-		} else if(i % 5 === 0) {
-			console.log(`buzz`);
-		} else if(i % 3 === 0) {
-			console.log(`fizz`);
+	for (let i = 1; i < 101; i++) {
+		fizzBuzzVar = isFizz(i) + isBuzz(i);
+		if (fizzBuzzVar !== ``) {
+			console.log(fizzBuzzVar);
 		} else {
 			console.log(i);
 		}
@@ -83,3 +111,19 @@ function fizzBuzz() {
 }
 
 // fizzBuzz()
+
+// Create a do-while loop that starts at 2, and displays the number squared on each line while the number is less than 1,000,000. Output should equal:
+// function twoSquared () {
+// 	for (let i = 2; i < 1000000; i = Math.pow(i, 2)) {
+// 		console.log(i);
+// 	}
+// }
+function twoSquared() {
+	let i = 2;
+	do {
+		console.log(i);
+		i = Math.pow(i, 2);
+	} while(i < 1000000);
+}
+
+// twoSquared()
