@@ -156,5 +156,53 @@ function explainString(string) {
 	return ob;
 }
 
-console.log(explainString("cheese")) // returns {string: "cheese", numberOfEs: 3, isEvenLength: true}
-console.log(explainString("dog")) // returns {string: "dog", numberOfEs: 0, isEvenLength: false}
+// console.log(explainString("cheese")) // returns {string: "cheese", numberOfEs: 3, isEvenLength: true}
+// console.log(explainString("dog")) // returns {string: "dog", numberOfEs: 0, isEvenLength: false}
+
+// Write a function that takes in an array of objects and returns an array containing all of the names from the original array.
+
+const hamsters = [
+	{
+		name: "Hamtaro",
+		heightInMM: 86,
+		fur: ['orange', 'white'],
+		gender: "male",
+		dateOfBirth: "August 6"
+	} , {
+		name: "Bijou",
+		heightInMM: 75,
+		fur: ['white'],
+		gender: "female",
+		dateOfBirth: "July 10"
+	} , {
+		name: "Oxnard",
+		heightInMM: 100,
+		fur: ['grey', 'white'],
+		gender: "male",
+		dateOfBirth: "May 3"
+	} , {
+		name: "Boss",
+		heightInMM: 120,
+		fur: ['brown', 'white'],
+		gender: "male",
+		dateOfBirth: "September 21"
+	} , {
+		name: "Snoozer",
+		heightInMM: 85,
+		fur: ['brown', 'white', "pink"],
+		gender: "male",
+		dateOfBirth: "January 14"
+	}
+];
+
+function extractNames(obArr) {
+	let names = [];
+
+	for(let i = 0; i < hamsters.length; i++) {
+		names.push(obArr[i].name);
+	}
+
+	return names;
+}
+
+// console.log(extractNames(hamsters)); // returns ["Hamtaro", "Bijou", "Oxnard", "Boss", "Snoozer"];
