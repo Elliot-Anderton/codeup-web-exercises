@@ -206,3 +206,19 @@ function extractNames(obArr) {
 }
 
 // console.log(extractNames(hamsters)); // returns ["Hamtaro", "Bijou", "Oxnard", "Boss", "Snoozer"];
+
+
+// Write a function that takes in an array of objects and returns the object with the largest heightInMM property
+
+const getTallest = function (obArr) {
+	let largest = obArr[0];
+
+	for (let i = 1; i < obArr.length; i++){
+		if(largest.heightInMM < obArr[i].heightInMM) {
+			largest = obArr[i];
+		}
+	}
+	return largest;
+}
+
+console.log(getTallest(hamsters)); // returns {name: "Boss", heightInMM: 120, fur: ['brown', 'white'], gender: "male", dateOfBirth: "September 21"}
