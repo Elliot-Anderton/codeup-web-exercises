@@ -226,7 +226,7 @@ const getTallest = function (obArr) {
 // Write a function that takes in an array of objects and returns an array of the objects from the array that only have one fur color.
 
 function singleFurColor(obArr) {
-	let bucket = []
+	let bucket = [];
 
 	obArr.forEach(function (obj){
 		if (obj.fur.length < 2){
@@ -236,4 +236,19 @@ function singleFurColor(obArr) {
 	return bucket;
 }
 
-console.log(singleFurColor(hamsters)); // returns [{name: "Bijou", heightInMM: 75, fur: ['white'], gender: "female", dateOfBirth: "July 10"}];
+// console.log(singleFurColor(hamsters)); // returns [{name: "Bijou", heightInMM: 75, fur: ['white'], gender: "female", dateOfBirth: "July 10"}];
+
+// Write a function that takes in an array of objects and returns the object with the most colors in the fur array.
+
+function mostColorful(obArr) {
+	let most = obArr[0]
+
+	obArr.forEach(function (obj) {
+		if (obj.fur.length > most.fur.length) {
+			most =  obj;
+		}
+	})
+	return most;
+}
+
+console.log(mostColorful(hamsters)); // returns {name: "Snoozer", heightInMM: 85, fur: ['brown', 'white', "pink"], gender: "male", dateOfBirth: "January 14"};
