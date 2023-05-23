@@ -1,10 +1,20 @@
 $(function () {
 	"use strict";
 
-	$(function () {
-		alert('The DOM has finished loading!');
-	});
+	$('li').css('font-size', `20px`).css(`background-color`, `yellow`);
+	$(`p`).css(`background-color`, `yellow`)
+	$(`h1`).css(`background-color`, `yellow`)
 
-	$(`.codeup`).css(`border`, '1px solid red')
+	let contents = $('h1').html();
+	alert(contents)
+	//
+	// Remove your custom jQuery code from previous exercises.
+	//
+	// 	Using jQuery, set the font-size of all li elements to 20px.
+	//
+	// 	Craft selectors that highlight all the h1, p, and li elements.
+	//
+	// 	Create a jQuery statement to alert the contents of your h1 element(s).
+
 
 });
