@@ -6,21 +6,20 @@ $(function () {
 	// let div = $(`div`)
 	// div.css(`color`, `brown`)
 
-	$(`h1`).click(function (){
+	$(`h1`).on(`click`,function (){
 		$(`h1`).css(`background-color`, `green`);
-	})
+	});
 
-	$(`p`).dblclick(function (){
+	$(`p`).on(`dblclick`, function (){
 		$(`p`).css(`font-size`, `18px`);
-	})
+	});
 
-	$(`li`).hover(
-		function (){
-		$(`li`).css(`color`, `red`);
-		},
-		function (){
-			$(`li`).css(`color`, `black`);
-		}
-		);
+	$(`li`)
+		.on(`mouseenter`, function (){
+			$(this).css(`color`, `red`);
+		})
+		.on(`mouseleave`, function (){
+			$(this).css(`color`, `black`);
+		});
 
 });
