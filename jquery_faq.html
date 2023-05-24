@@ -51,9 +51,8 @@
 	</dl>
 
 	<script>
-		let dt = $(`dt`)
 
-		dt.on( "click", function() {
+		$(`dt`).on( "click", function() {
 			const now = $(this).hasClass(`highlight`);
 			let isHigh = $(`.highlight`);
 
