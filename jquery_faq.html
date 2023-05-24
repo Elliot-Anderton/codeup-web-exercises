@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JQuery FAQ</title>
+	<script
+			src="https://code.jquery.com/jquery-3.7.0.js"
+			integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+			crossorigin="anonymous">
+	</script>
+	<style>
+		.invisible {
+			visibility: hidden;
+		}
+		.highlight {
+			background-color: yellow;
+		}
+	</style>
+</head>
+<body>
+	<dl>
+		<dt>Crater Lake National Park</dt>
+		<dd class="invisible">At 1,932ft it is the deepest lake in the U.S.</dd>
+
+		<dt>Kobuk Valley National Park</dt>
+		<dd class="invisible">The least visited national park with 3,000 visitors per year</dd>
+
+		<dt>Mammoth Cave National Park</dt>
+		<dd class="invisible">Has the largest cave system in the world</dd>
+
+		<dt>John Day Fossil Beds</dt>
+		<dd class="invisible">40 million years of mammilian history preserved in fossils</dd>
+
+		<dt>Wrangell-St. Elias National Park</dt>
+		<dd class="invisible">Largest National park, covering 13,000 square miles</dd>
+
+		<dt>Seneca Falls National Park</dt>
+		<dd class="invisible">Location of the first women's rights convention</dd>
+
+		<dt>Yellowstone National Park</dt>
+		<dd class="invisible">Oldest U.S. National park, founded in 1872</dd>
+
+		<dt>Yosemite National Park</dt>
+		<dd class="invisible">Location of 3 of the 10 highest waterfalls in the world</dd>
+
+		<dt>Arches National Park</dt>
+		<dd class="invisible">Largest concentration of stone arches in the world</dd>
+
+		<dt>Everglades</dt>
+		<dd class="invisible">Protects 25% of Florida's everglades</dd>
+	</dl>
+
+	<script>
+		let dt = $(`dt`)
+
+		dt.on( "click", function() {
+			const now = $(this).hasClass(`highlight`);
+			let isHigh = $(`.highlight`);
+
+			isHigh.next().addClass(`invisible`);
+			isHigh.removeClass(`highlight`);
+			if (!now) {
+				$(this).toggleClass(`highlight`);
+				$(this).next().toggleClass(`invisible`);
+			}
+		});
+
+	</script>
+</body>
+</html>
