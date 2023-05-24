@@ -1,0 +1,40 @@
+:root {
+    --bg-primary: red;
+    --text-primary: darkgreen;
+}
+
+@-webkit-keyframes blackWhite {
+    0% { background-color: var(--bg-primary); }
+    50% { background-color: var(--bg-primary); }
+    51% { background-color: var(--text-primary); }
+    100% { background-color: var(--text-primary); }
+}
+
+.blink {
+    background-color: var(--text-primary);
+    -webkit-animation-name: blackWhite;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-duration: 2s;
+}
+@-webkit-keyframes redGreen {
+    0% { color: var(--text-primary); }
+    50% { color: var(--text-primary); }
+    51% { color: var(--bg-primary); }
+    100% { color: var(--bg-primary); }
+}
+.blink2 {
+    color: var(--bg-primary);
+    -webkit-animation-name: redGreen;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-duration: 2s;
+}
+.hide {
+    display: none;
+}
+.yay {
+    display: block;
+    font-size: 10em;
+    text-align: center;
+    margin-top: 15vw;
+}
+
