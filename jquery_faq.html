@@ -7,15 +7,8 @@
 			src="https://code.jquery.com/jquery-3.7.0.js"
 			integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
 			crossorigin="anonymous">
-	</script>
-	<style>
-		.invisible {
-			visibility: hidden;
-		}
-		.highlight {
-			background-color: yellow;
-		}
-	</style>
+	</script><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/jquery_faqs.css">
 </head>
 <body>
 	<dl>
@@ -50,20 +43,67 @@
 		<dd class="invisible">Protects 25% of Florida's everglades</dd>
 	</dl>
 
-	<script>
+	<div class="row justify-content-center">
+		<ul class="col-3">
+			<li>
+				<h3>Crater Lake National Park</h3>
+				<ul class="list">
+					<li>Lorem ipsum</li>
+					<li>Lorem ipsum</li>
+					<li>Lorem ipsum</li>
+					<li>Lorem ipsum</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="col-3">
+			<li>
+				<h3>Yellow Stone National Park</h3>
+				<ul class="list">
+					<li>Lorem ipsum</li>
+					<li>Lorem ipsum</li>
+					<li>Lorem ipsum</li>
+					<li>Lorem ipsum</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="col-3">
+			<li>
+				<h3>Kobuk National Park</h3>
+				<ul class="list">
+					<li>Lorem ipsum</li>
+					<li>Lorem ipsum</li>
+					<li>Lorem ipsum</li>
+					<li>Lorem ipsum</li>
+				</ul>
+			</li>
+		</ul>
+		<button type="button" id="turn-yellow" class="col-4 justify-content-center">Turn Yellow</button>
+	</div>
 
-		$(`dt`).on( "click", function() {
-			const now = $(this).hasClass(`highlight`);
-			let isHigh = $(`.highlight`);
+	<div class="row row-cols-4 justify-content-center">
+		<div id=`left` class="card col text-center m-2 color-gold" style="width: 18rem;">
+			<img src="img/lake.jpg" class="card-img-top" alt="...">
+			<div class="card-body">
+				<a href="#" class="btn btn-primary left">Go somewhere</a>
+			</div>
+		</div>
+		<div id="middle" class="card col text-center m-2 color-black" style="width: 18rem;">
+			<img src="img/lake.jpg" class="card-img-top" alt="...">
+			<div class="card-body">
+				<a href="#" class="btn btn-primary middle">Go somewhere</a>
+			</div>
+		</div>
+		<div id=`right` class="card col text-center m-2 color-red" style="width: 18rem;">
+			<img src="img/lake.jpg" class="card-img-top" alt="...">
+			<div class="card-body">
+				<a href="#" class="btn btn-primary right">Go somewhere</a>
+			</div>
+		</div>
+	</div>
 
-			isHigh.next().addClass(`invisible`);
-			isHigh.removeClass(`highlight`);
-			if (!now) {
-				$(this).toggleClass(`highlight`);
-				$(this).next().toggleClass(`invisible`);
-			}
-		});
 
-	</script>
+	<script src="js/jquery_faq.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
 </body>
 </html>

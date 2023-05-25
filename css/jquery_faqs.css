@@ -1,0 +1,20 @@
+.invisible {
+    visibility: hidden;
+}
+.highlight {
+    background-color: yellow;
+}
+.pic {
+    border: 10px solid black;
+    height: 20vw;
+    width: 20vw;
+}
+.color-gold {
+    border: 5px solid gold;
+}
+.color-black {
+    border: 5px solid black;
+}
+.color-red {
+    border: 5px solid red;
+}
