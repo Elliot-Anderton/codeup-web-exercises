@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Mapbox Maps API</title>
+	<script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
+	<link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
+
+	<style>
+		#map {
+			width: 100%;
+			height: 700px;
+		}
+	</style>
+</head>
+<body>
+<div id='map' style='width: 400px; height: 300px;'></div>
+
+	<label for="zoomlevel"></label>
+	<select name="zoomlevel" id="zoomlevel">
+		<option>5</option>
+		<option selected>10</option>
+		<option>15</option>
+	</select>
+
+	<label for="searchAddress"></label>
+	<input type="text" name="searchAddress" id="searchAddress" placeholder="Enter address">
+	<button id="submit">Search</button>
+
+	<button id="hide">Hide Markers</button>
+
+	<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+	<script src="js/mapbox-geocoder-utils.js"></script>
+
+	<script src="js/keys.js"></script>
+	<script
+			src="https://code.jquery.com/jquery-3.7.0.js"
+			integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+			crossorigin="anonymous">
+	</script>
+	<script src="js/mapbox_maps_api.js"></script>
+
+</body>
+</html>
