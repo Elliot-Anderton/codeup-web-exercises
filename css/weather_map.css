@@ -1,0 +1,22 @@
+* {
+    color: darkgreen;
+}
+body {
+    background-image: linear-gradient(to right, lightskyblue , lightyellow);
+}
+#map{
+    width: 100vw;
+    height: 25vw;
+    border: 1px solid gray;
+}
+.card {
+    background-image: linear-gradient(to right, lightyellow, lightskyblue);
+}
+input[type="text"]{
+    border: 1px solid gray;
+    outline: none;
+}
+button {
+    border: 1px solid gray;
+    outline: none;
+}

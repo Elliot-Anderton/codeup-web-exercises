@@ -1,6 +1,9 @@
 $(function () {
 
-	let coordinates = [-123.26124, 44.5597];
+	let coordinates = [-121.866126, 42.577636];
+
+	updateMap(coordinates);
+	currentWeather(coordinates);
 
 	function updateMap(coordinates) {
 		mapboxgl.accessToken = MBWM_KEY;
@@ -20,9 +23,6 @@ $(function () {
 		});
 	}
 
-	updateMap(coordinates);
-	currentWeather(coordinates);
-
 	function onDragEnd(marker) {
 		const lngLat = marker.getLngLat();
 		coordinates.splice(0, 1, lngLat.lng);
@@ -38,16 +38,18 @@ $(function () {
 			units: "imperial"
 		}).done(function (data) {
 			let html = `<h1>${data.name}</h1>`
-			let todayDate = getTime(data.dt, 1)
-			html += `<section class="row"><h6 class="col">${todayDate}</h6><br>`
-			html += `<p>${data.main.temp_max} / ${data.main.temp_min}</p>`
+			let todayDate = getTime(data.dt, data.timezone, 1)
+			html += `<h6>${todayDate}</h6>`
+			html += `<section class="card col-2 my-3 py-1"><h6>Today</h6>`
+			html += `<p class="my-1">High: ${data.main.temp_max}</p>`
+			html += `<p>Low: ${data.main.temp_min}</p>`
 			html += `<p>${data.weather[0].description}</p>`
-			html += `<p>${data.weather[0].icon}</p>`
 			html += `</section>`
 			$(`#current`).html(html);
 			updateWeather(coordinates);
 		})
 	}
+
 
 	function updateWeather(coordinates) {
 		$.get("http://api.openweathermap.org/data/2.5/forecast", {
@@ -56,16 +58,17 @@ $(function () {
 			lon: coordinates[0],
 			units: "imperial"
 		}).done(function (data) {
-			console.log(`here`)
 			let html = ``
-			for (let i = 2; i < 35; i += 8) {
-				let todayDate = getTime(data.list[i].dt)
-				html += `<section class="row"><h6 class="col">${todayDate}</h6><br>`
-				html += `<p >${data.list[i].main.temp_max} / ${data.list[i].main.temp_min}</p>`
+			console.log(data)
+			for (let i = 6; i < 31; i += 8) {
+				let todayDate = getTime(data.list[i].dt, data.city.timezone)
+				html += `<section class="card col-2 my-3 py-1"><h6>${todayDate}</h6><br>`
+				html += `<p class="my-1">High: ${data.list[i].main.temp_max}</p>`
+				html += `<p>Low: ${data.list[i].main.temp_min}</p>`
 				html += `<p>${data.list[i].weather[0].description}</p>`
 				html += `</section>`
 			}
-			$(`#forecast`).html(html);
+			$(`#current`).append(html);
 		});
 	}
 
@@ -78,8 +81,8 @@ $(function () {
 		})
 	})
 
-	function getTime(unixTime, option) {
-		let millisecond = unixTime * 1000
+	function getTime(unixTime, offset, option) {
+		let millisecond = ((unixTime + 25270) + offset) * 1000
 		let dateObject = new Date(millisecond)
 		let options;
 		if (option === 1) {

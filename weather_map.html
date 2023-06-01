@@ -9,20 +9,20 @@
 	      rel="stylesheet"
 	      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
 	      crossorigin="anonymous">
+	<link rel="stylesheet" href="css/weather_map.css">
 </head>
-<body>
-	<div id ="current"></div>
-	<div id ="forecast"></div>
+<body class="text-center">
+	<section id ="current" class="row justify-content-center my-3"></section>
 
-	<div id ="map" style='width: 400px; height: 300px;'></div>
+	<div id ="map"></div>
 
 	<label for="searchCity"></label>
-	<input type="text" name="searchAddress" id="searchCity" placeholder="Enter City">
-	<button id="submit">Search</button>
+	<input class="my-1 w-25" type="text" name="searchAddress" id="searchCity" placeholder="Enter City">
+		<br>
+	<button id="submit" class="w-25">Search</button>
 
 	<script src="js/keys.js"></script>
-	<script
-			src="https://code.jquery.com/jquery-3.7.0.js"
+	<script src="https://code.jquery.com/jquery-3.7.0.js"
 			integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
 			crossorigin="anonymous">
 	</script>
