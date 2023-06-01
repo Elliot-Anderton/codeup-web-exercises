@@ -4,6 +4,7 @@ $(function () {
 
 	updateMap(coordinates);
 	currentWeather(coordinates);
+	updateWeather(coordinates);
 
 	function updateMap(coordinates) {
 		mapboxgl.accessToken = MBWM_KEY;
@@ -28,6 +29,7 @@ $(function () {
 		coordinates.splice(0, 1, lngLat.lng);
 		coordinates.splice(1, 1, lngLat.lat);
 		currentWeather(coordinates);
+		updateWeather(coordinates);
 	}
 
 	function currentWeather(coordinates) {
@@ -44,9 +46,9 @@ $(function () {
 			html += `<p class="my-1">High: ${data.main.temp_max}</p>`
 			html += `<p>Low: ${data.main.temp_min}</p>`
 			html += `<p>${data.weather[0].description}</p>`
+			html += `<h1 class=""><img id="weeklyWeatherIcon" class="img-fluid" src=https://openweathermap.org/img/w/${data.weather[0].icon}.png  alt="Weather icon"></h1>`
 			html += `</section>`
 			$(`#current`).html(html);
-			updateWeather(coordinates);
 		})
 	}
 
@@ -60,12 +62,13 @@ $(function () {
 		}).done(function (data) {
 			let html = ``
 			console.log(data)
-			for (let i = 6; i < 31; i += 8) {
+			for (let i = 2; i < 27; i += 8) {
 				let todayDate = getTime(data.list[i].dt, data.city.timezone)
 				html += `<section class="card col-2 my-3 py-1"><h6>${todayDate}</h6><br>`
 				html += `<p class="my-1">High: ${data.list[i].main.temp_max}</p>`
 				html += `<p>Low: ${data.list[i].main.temp_min}</p>`
-				html += `<p>${data.list[i].weather[0].description}</p>`
+				html += `<p class="pb-0 mb-0">${data.list[i].weather[0].description}</p>`
+				html += `<h1 class=""><img id="weeklyWeatherIcon" class="img-fluid" src=https://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png  alt="Weather icon"></h1>`
 				html += `</section>`
 			}
 			$(`#current`).append(html);
@@ -74,10 +77,11 @@ $(function () {
 
 	$(`#submit`).on(`click`, function () {
 		geocode($(`#searchCity`).val(), API_PRACTICE).then(function (result) {
-			console.log(result)
-			coordinates = result
-			updateMap(coordinates)
-			currentWeather(coordinates)
+			console.log(result);
+			coordinates = result;
+			updateMap(coordinates);
+			currentWeather(coordinates);
+			updateWeather(coordinates);
 		})
 	})
 
