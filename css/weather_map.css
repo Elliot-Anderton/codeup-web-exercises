@@ -2,15 +2,20 @@
     color: darkgreen;
 }
 body {
-    background-image: linear-gradient(to left, lightskyblue , lightyellow);
+    background-image: linear-gradient(to right, lightskyblue , lightyellow);
 }
 #map{
     width: 100vw;
     height: 25vw;
     border: 1px solid gray;
 }
+h6 {
+    background-image: linear-gradient(to left, #d92b0e, #257ca3);
+    background-clip: text;
+    color: transparent;
+}
 .card {
-    background-image: linear-gradient(to left, lightyellow, lightskyblue);
+    background-image: linear-gradient(to right, lightyellow, lightskyblue);
 }
 input[type="text"]{
     border: 1px solid gray;

@@ -45,8 +45,8 @@ $(function () {
 			html += `<section class="card col-2 my-3 py-1"><h6>Today</h6>`
 			html += `<p class="my-1">High: ${data.main.temp_max}</p>`
 			html += `<p>Low: ${data.main.temp_min}</p>`
-			html += `<p>${data.weather[0].description}</p>`
-			html += `<h1 class=""><img id="weeklyWeatherIcon" class="img-fluid" src=https://openweathermap.org/img/w/${data.weather[0].icon}.png  alt="Weather icon"></h1>`
+			html += `<p class="pb-0 mb-0">${data.weather[0].description}</p>`
+			html += `<p><img id="weeklyWeatherIcon" class="img-fluid" src=https://openweathermap.org/img/w/${data.weather[0].icon}.png  alt="Weather icon"></p>`
 			html += `</section>`
 			$(`#current`).html(html);
 		})
@@ -54,7 +54,7 @@ $(function () {
 
 
 	function updateWeather(coordinates) {
-		$.get("http://api.openweathermap.org/data/2.5/forecast", {
+		$.get("http://api.openweathermap.org/data/2.5/onecall", {
 			APPID: OWM_KEY,
 			lat: coordinates[1],
 			lon: coordinates[0],
@@ -62,13 +62,13 @@ $(function () {
 		}).done(function (data) {
 			let html = ``
 			console.log(data)
-			for (let i = 2; i < 27; i += 8) {
-				let todayDate = getTime(data.list[i].dt, data.city.timezone)
+			for (let i = 1; i < 5; i++) {
+				let todayDate = getTime(data.daily[i].dt, data.timezone_offset)
 				html += `<section class="card col-2 my-3 py-1"><h6>${todayDate}</h6><br>`
-				html += `<p class="my-1">High: ${data.list[i].main.temp_max}</p>`
-				html += `<p>Low: ${data.list[i].main.temp_min}</p>`
-				html += `<p class="pb-0 mb-0">${data.list[i].weather[0].description}</p>`
-				html += `<h1 class=""><img id="weeklyWeatherIcon" class="img-fluid" src=https://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png  alt="Weather icon"></h1>`
+				html += `<p class="my-1">High: ${data.daily[i].temp.max}</p>`
+				html += `<p>Low: ${data.daily[i].temp.min}</p>`
+				html += `<p class="pb-0 mb-0">${data.daily[i].weather[0].description}</p>`
+				html += `<h1><img id="weeklyWeatherIcon" class="img-fluid" src=https://openweathermap.org/img/w/${data.daily[i].weather[0].icon}.png  alt="Weather icon"></h1>`
 				html += `</section>`
 			}
 			$(`#current`).append(html);
