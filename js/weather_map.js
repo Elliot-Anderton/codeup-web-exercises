@@ -14,6 +14,10 @@ $(function () {
 			zoom: 10,
 			center: coordinates
 		});
+		updateMarker(map, coordinates)
+	}
+
+	function updateMarker(map, coordinates) {
 		const marker = new mapboxgl.Marker({
 			draggable: true
 		})
@@ -42,13 +46,8 @@ $(function () {
 			let html = `<h1>${data.name}</h1>`
 			let todayDate = getTime(data.dt, data.timezone, 1)
 			html += `<h6>${todayDate}</h6>`
-			html += `<section class="card col-2 my-3 py-1"><h6>Today</h6>`
-			html += `<p class="my-1">High: ${data.main.temp_max}</p>`
-			html += `<p>Low: ${data.main.temp_min}</p>`
-			html += `<p class="pb-0 mb-0">${data.weather[0].description}</p>`
-			html += `<p><img id="weeklyWeatherIcon" class="img-fluid" src=https://openweathermap.org/img/w/${data.weather[0].icon}.png  alt="Weather icon"></p>`
-			html += `</section>`
 			$(`#current`).html(html);
+			rainDance(`Today`,  data.main.temp_max,  data.main.temp_min, data.weather[0])
 		})
 	}
 
@@ -60,24 +59,27 @@ $(function () {
 			lon: coordinates[0],
 			units: "imperial"
 		}).done(function (data) {
-			let html = ``
-			console.log(data)
 			for (let i = 1; i < 5; i++) {
 				let todayDate = getTime(data.daily[i].dt, data.timezone_offset)
-				html += `<section class="card col-2 my-3 py-1"><h6>${todayDate}</h6><br>`
-				html += `<p class="my-1">High: ${data.daily[i].temp.max}</p>`
-				html += `<p>Low: ${data.daily[i].temp.min}</p>`
-				html += `<p class="pb-0 mb-0">${data.daily[i].weather[0].description}</p>`
-				html += `<h1><img id="weeklyWeatherIcon" class="img-fluid" src=https://openweathermap.org/img/w/${data.daily[i].weather[0].icon}.png  alt="Weather icon"></h1>`
-				html += `</section>`
+				let daily = data.daily[i];
+				rainDance(todayDate,  daily.temp.max,  daily.temp.min, daily.weather[0])
 			}
-			$(`#current`).append(html);
 		});
+	}
+
+	function rainDance(day, max, min, weather) {
+		let html = ``
+		html += `<section class="card col-2 my-3 py-1"><h6>${day}</h6><br>`
+		html += `<p class="my-1">High: ${max}</p>`
+		html += `<p>Low: ${min}</p>`
+		html += `<p class="pb-0 mb-0">${weather.description}</p>`
+		html += `<h1><img id="weeklyWeatherIcon" class="img-fluid" src=https://openweathermap.org/img/w/${weather.icon}.png  alt="Weather icon"></h1>`
+		html += `</section>`
+		$(`#current`).append(html);
 	}
 
 	$(`#submit`).on(`click`, function () {
 		geocode($(`#searchCity`).val(), API_PRACTICE).then(function (result) {
-			console.log(result);
 			coordinates = result;
 			updateMap(coordinates);
 			currentWeather(coordinates);

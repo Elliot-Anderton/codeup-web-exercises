@@ -10,7 +10,7 @@ body {
     border: 1px solid gray;
 }
 h6 {
-    background-image: linear-gradient(to left, #d92b0e, #257ca3);
+    background-image: linear-gradient(to left, #f50606, blue);
     background-clip: text;
     color: transparent;
 }
