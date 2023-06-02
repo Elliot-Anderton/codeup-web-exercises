@@ -25,3 +25,11 @@ button {
     border: 1px solid gray;
     outline: none;
 }
+li {
+    background-color:rgba(0, 0, 0, 0.06);
+    border: 1px solid lightgray;
+}
+.collapse {
+    height: 14.5vw;
+    overflow-y: scroll
+}

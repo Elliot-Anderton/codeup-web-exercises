@@ -62,6 +62,7 @@ $(function () {
 
 	//-------------------------Handles Data from request------------------------------//
 	function currentWeather(data) {
+		console.log(data)
 		let current = data.current;
 		let todayDate = getTime(current.dt, data.timezone_offset, true);
 
@@ -73,6 +74,7 @@ $(function () {
 			let todayDate = getTime(daily.dt, data.timezone_offset);
 
 			rainDance(todayDate, `High`, daily.temp.max, `Low`, daily.temp.min, daily.weather[0]);
+			hourly(data)
 		}
 	}
 
@@ -87,6 +89,22 @@ $(function () {
 		html += `</section>`
 
 		$(`#weather`).append(html);
+	}
+
+	//-------------------------Renders for hourly---------------------------//
+	function hourly(data) {
+		let html = `<ul class="">`
+		for (let i = 0; i < 48; i++) {
+			let hourly = data.hourly[i];
+			let hour = getTime(hourly.dt, data.timezone_offset, false);
+			html += `<li class="row ">`
+			html += `<span class="col me-5">${hour}</span>`
+			html += `<span class="col-4 mx-5">Temp: ${hourly.temp}</span>`
+			html += `<span class="col ms-5">${hourly.weather[0].description}</li>`
+		}
+		html += `<ul>`
+
+		$(`#hour`).html(html);
 	}
 
 	//-------------------------Handles reverseGeoCode to get correct place name---------------------------//
@@ -120,6 +138,12 @@ $(function () {
 				year: 'numeric',
 				month: 'long',
 				day: 'numeric',
+				hour: '2-digit',
+				minute: '2-digit'
+			}
+		} else if (full === false) {
+			options = {
+				weekday: 'long',
 				hour: '2-digit',
 				minute: '2-digit'
 			}

@@ -13,16 +13,19 @@
 </head>
 <body class="text-center">
 	<h1 id="place"></h1>
-	<div id ="weather" class="row justify-content-center my-3">
+	<div id ="weather" class="row justify-content-center my-3" data-bs-toggle="collapse" href="#hourly"></div>
 
+	<div class="collapse row justify-content-center mb-4" id="hourly">
+		<div class="col-8" id="hour"></div>
 	</div>
 
 	<div id ="map"></div>
 
 	<label for="searchCity"></label>
-	<input class="my-1 w-25" type="text" name="searchAddress" id="searchCity" placeholder="Enter City">
-		<br>
+	<input class="my-1 w-25" type="text" name="searchAddress" id="searchCity" placeholder="Enter City"><br>
 	<button id="submit" class="w-25 ms-1">Search</button>
+
+
 
 	<script src="js/keys.js"></script>
 	<script src="https://code.jquery.com/jquery-3.7.0.js"
