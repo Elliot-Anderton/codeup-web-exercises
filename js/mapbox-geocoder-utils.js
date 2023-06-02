@@ -20,12 +20,6 @@ function reverseGeocode(coordinates, token) {
 		})
 		// to get all the data from the request, comment out the following three lines...
 		.then(function (data) {
-			if (data.features.length >= 3) {
-				return data.features[2].place_name;
-			} else if (data.features.length === 2) {
-				return data.features[1].place_name;
-			} else {
-				return data.query.join(`, `)
-			}
+			return data.features;
 		})
 }

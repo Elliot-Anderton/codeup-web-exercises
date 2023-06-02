@@ -4,11 +4,11 @@ $(function () {
 	let coordinates = [-121.866126, 42.577636];
 
 	//-------------------------List of initial Calls---------------------------//
-	updateMap(coordinates);
-	updateWeather(coordinates);
+	updateMap();
+	updateWeather();
 
 	//-------------------------Creates and updates map---------------------------//
-	function updateMap(coordinates) {
+	function updateMap() {
 		mapboxgl.accessToken = MBWM_KEY;
 		let map = new mapboxgl.Map({
 			container: 'map',
@@ -16,11 +16,11 @@ $(function () {
 			zoom: 10,
 			center: coordinates
 		})
-		updateMarker(map, coordinates);
+		updateMarker(map);
 	}
 
 	//-------------------------Creates and updates marker---------------------------//
-	function updateMarker(map, coordinates) {
+	function updateMarker(map) {
 		const marker = new mapboxgl.Marker({
 			draggable: true
 		})
@@ -34,30 +34,44 @@ $(function () {
 	//-------------------------Updates coordinates array on drag end---------------------------//
 	function onDragEnd(marker) {
 		const lngLat = marker.getLngLat();
-		coordinates.splice(0, 1, lngLat.lng);
-		coordinates.splice(1, 1, lngLat.lat);
-		updateWeather(coordinates);
+		coordinates.splice(0, 2, lngLat.lng, lngLat.lat);
+		updateWeather();
 	}
 
 	//-------------------------Uses GeoCode to update coordinates for search---------------------------//
 	$(`#submit`).on(`click`, function () {
 		geocode($(`#searchCity`).val(), API_PRACTICE).then(function (result) {
 			coordinates = result;
-			updateMap(coordinates);
-			updateWeather(coordinates);
+			updateMap();
+			updateWeather();
 		})
 	})
 
 	//-------------------------Gets forecast with one call---------------------------//
-	function updateWeather(coordinates) {
+	function updateWeather() {
 		$.get("http://api.openweathermap.org/data/2.5/onecall", {
 			APPID: OWM_KEY,
 			lat: coordinates[1],
 			lon: coordinates[0],
 			units: "imperial"
 		}).done(currentWeather)
-		reverseGeocode({lng: coordinates[0], lat: coordinates[1]}, MBWM_KEY).then(function (results) {
-			$(`#place`).html(results)
+		getPlace()
+	}
+
+	function getPlace() {
+		reverseGeocode({lng: coordinates[0], lat: coordinates[1]}, MBWM_KEY).then(function (features) {
+			console.log(features)
+			let place;
+			if (features.length >= 7) {
+				place = features[3].place_name;
+			} else if (features.length >= 3) {
+				place = features[2].place_name;
+			} else if (features.length === 2) {
+				place = features[1].place_name;
+			} else {
+				place = `${coordinates[0].toFixed(4).toString()}`;
+			}
+			$(`#place`).html(place)
 		})
 	}
 
