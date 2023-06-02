@@ -1,4 +1,4 @@
-* {
+*, h1 {
     color: darkgreen;
 }
 body {
@@ -9,7 +9,7 @@ body {
     height: 25vw;
     border: 1px solid gray;
 }
-h6 {
+h5 {
     background-image: linear-gradient(to left, #f50606, blue);
     background-clip: text;
     color: transparent;

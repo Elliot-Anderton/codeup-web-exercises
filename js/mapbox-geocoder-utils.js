@@ -3,23 +3,29 @@ function geocode(search, token) {
 	let endPoint = '/geocoding/v5/mapbox.places/';
 
 	return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
-		.then(function(res) {
+		.then(function (res) {
 			return res.json();
 			// to get all the data from the request, comment out the following three lines...
-		}).then(function(data) {
+		}).then(function (data) {
 			return data.features[0].center;
 		});
+}
 
-	// function reverseGeocode(coordinates, token) {
-	// 	var baseUrl = 'https://api.mapbox.com';
-	// 	var endPoint = '/geocoding/v5/mapbox.places/';
-	// 	return fetch(baseUrl + endPoint + coordinates.lng + "," + coordinates.lat + '.json' + "?" + 'access_token=' + token)
-	// 		.then(function(res) {
-	// 			return res.json();
-	// 		})
-	// 		// to get all the data from the request, comment out the following three lines...
-	// 		.then(function(data) {
-	// 			return data.features[0].place_name;
-	// 		});
-	// }
+function reverseGeocode(coordinates, token) {
+	var baseUrl = 'https://api.mapbox.com';
+	var endPoint = '/geocoding/v5/mapbox.places/';
+	return fetch(baseUrl + endPoint + coordinates.lng + "," + coordinates.lat + '.json' + "?" + 'access_token=' + token)
+		.then(function (res) {
+			return res.json();
+		})
+		// to get all the data from the request, comment out the following three lines...
+		.then(function (data) {
+			if (data.features.length >= 3) {
+				return data.features[2].place_name;
+			} else if (data.features.length === 2) {
+				return data.features[1].place_name;
+			} else {
+				return data.query.join(`, `)
+			}
+		})
 }
