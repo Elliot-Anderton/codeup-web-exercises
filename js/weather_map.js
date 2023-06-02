@@ -26,6 +26,7 @@ $(function () {
 		})
 			.setLngLat(coordinates)
 			.addTo(map);
+
 		marker.on('dragend', function () {
 			onDragEnd(marker);
 		})
@@ -58,32 +59,19 @@ $(function () {
 		getPlace()
 	}
 
-	function getPlace() {
-		reverseGeocode({lng: coordinates[0], lat: coordinates[1]}, MBWM_KEY).then(function (features) {
-			console.log(features)
-			let place;
-			if (features.length >= 7) {
-				place = features[3].place_name;
-			} else if (features.length >= 3) {
-				place = features[2].place_name;
-			} else if (features.length === 2) {
-				place = features[1].place_name;
-			} else {
-				place = `${coordinates[0].toFixed(4).toString()}`;
-			}
-			$(`#place`).html(place)
-		})
-	}
 
 	//-------------------------Handles Data from request------------------------------//
 	function currentWeather(data) {
-		console.log(data)
-		let todayDate = getTime(data.current.dt, data.timezone_offset, true);
+		let current = data.current;
+		let todayDate = getTime(current.dt, data.timezone_offset, true);
+
 		$(`#weather`).html(`<h5>${todayDate}</h5>`);
-		rainDance(`Today`, `Temp`, data.current.temp, `Feels Like`, data.current.feels_like, data.current.weather[0]);
+		rainDance(`Today`, `Temp`, current.temp, `Feels Like`, current.feels_like, current.weather[0])
+
 		for (let i = 1; i < 5; i++) {
-			let todayDate = getTime(data.daily[i].dt, data.timezone_offset);
 			let daily = data.daily[i];
+			let todayDate = getTime(daily.dt, data.timezone_offset);
+
 			rainDance(todayDate, `High`, daily.temp.max, `Low`, daily.temp.min, daily.weather[0]);
 		}
 	}
@@ -97,16 +85,36 @@ $(function () {
 		html += `<p class="pb-0 mb-0">${weather.description}</p>`
 		html += `<h1><img id="weeklyWeatherIcon" class="img-fluid" src=https://openweathermap.org/img/w/${weather.icon}.png  alt="Weather icon"></h1>`
 		html += `</section>`
+
 		$(`#weather`).append(html);
 	}
 
+	//-------------------------Handles reverseGeoCode to get correct place name---------------------------//
+	function getPlace() {
+		reverseGeocode({lng: coordinates[0], lat: coordinates[1]}, MBWM_KEY).then(function (features) {
+			let place;
+
+			if (features.length >= 7) {
+				place = features[3].place_name;
+			} else if (features.length >= 3) {
+				place = features[2].place_name;
+			} else if (features.length === 2) {
+				place = features[1].place_name;
+			} else {
+				place =`Lat: ${coordinates[1].toFixed(4).toString()}, Long: ${coordinates[0].toFixed(4).toString()}`;
+			}
+			$(`#place`).html(place)
+		})
+	}
+
 	//-------------------------Formats Time and Date---------------------------//
-	function getTime(unixTime, offset, isItThough) {
+	function getTime(unixTime, offset, full) {
 		let tz = new Date().getTimezoneOffset() * 60;
 		let millisecond = ((unixTime + tz) + offset) * 1000;
 		let dateObject = new Date(millisecond);
 		let options;
-		if (isItThough) {
+
+		if (full) {
 			options = {
 				weekday: 'long',
 				year: 'numeric',
