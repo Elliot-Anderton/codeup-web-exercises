@@ -3,7 +3,7 @@ $(function () {
 	//-------------------------Global var used everywhere---------------------------//
 	let coordinates = [-121.866126, 42.577636];
 
-	//-------------------------List of initial Calls---------------------------//
+	//-------------------------Initial Calls---------------------------//
 	updateMap();
 	updateWeather();
 
@@ -55,14 +55,13 @@ $(function () {
 			lat: coordinates[1],
 			lon: coordinates[0],
 			units: "imperial"
-		}).done(currentWeather)
-		getPlace()
+		}).done(currentWeather);
+		getPlace();
 	}
 
 
 	//-------------------------Handles Data from request------------------------------//
 	function currentWeather(data) {
-		console.log(data)
 		let current = data.current;
 		let todayDate = getTime(current.dt, data.timezone_offset, true);
 
@@ -74,35 +73,35 @@ $(function () {
 			let todayDate = getTime(daily.dt, data.timezone_offset);
 
 			rainDance(todayDate, `High`, daily.temp.max, `Low`, daily.temp.min, daily.weather[0]);
-			hourly(data)
+			hourly(data);
 		}
 	}
 
 	//-------------------------Renders HTML---------------------------//
 	function rainDance(day, high, max, low, min, weather) {
-		let html = ``
-		html += `<section class="card col-2 my-3 py-1"><h5>${day}</h5><br>`
-		html += `<p class="my-1">${high}: ${Math.round(max)}</p>`
-		html += `<p>${low}: ${Math.round(min)}</p>`
-		html += `<p class="pb-0 mb-0">${weather.description}</p>`
-		html += `<h1><img id="weeklyWeatherIcon" class="img-fluid" src=https://openweathermap.org/img/w/${weather.icon}.png  alt="Weather icon"></h1>`
-		html += `</section>`
+		let html = ``;
+		html += `<section class="card col-2 my-3 py-1"><h5>${day}</h5><br>`;
+		html += `<p class="my-1">${high}: ${Math.round(max)}</p>`;
+		html += `<p>${low}: ${Math.round(min)}</p>`;
+		html += `<p class="pb-0 mb-0">${weather.description}</p>`;
+		html += `<h1><img id="weeklyWeatherIcon" class="img-fluid" src=https://openweathermap.org/img/w/${weather.icon}.png  alt="Weather icon"></h1>`;
+		html += `</section>`;
 
 		$(`#weather`).append(html);
 	}
 
-	//-------------------------Renders for hourly---------------------------//
+	//-------------------------Renders HTML for hourly---------------------------//
 	function hourly(data) {
-		let html = `<ul class="">`
+		let html = `<ul class="">`;
 		for (let i = 0; i < 48; i++) {
 			let hourly = data.hourly[i];
 			let hour = getTime(hourly.dt, data.timezone_offset, false);
-			html += `<li class="row ">`
-			html += `<span class="col me-5">${hour}</span>`
-			html += `<span class="col-4 mx-5">Temp: ${hourly.temp}</span>`
-			html += `<span class="col ms-5">${hourly.weather[0].description}</li>`
+			html += `<li class="row ">`;
+			html += `<span class="col me-5">${hour}</span>`;
+			html += `<span class="col-4 mx-5">Temp: ${hourly.temp}</span>`;
+			html += `<span class="col ms-5">${hourly.weather[0].description}</li>`;
 		}
-		html += `<ul>`
+		html += `<ul>`;
 
 		$(`#hour`).html(html);
 	}

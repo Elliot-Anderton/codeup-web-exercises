@@ -12,19 +12,25 @@
 	<link rel="stylesheet" href="css/weather_map.css">
 </head>
 <body class="text-center">
+	<!-----------------------h1 Holds location name------------------------>
 	<h1 id="place"></h1>
+	<!-----------------------div holds cards containing information about the weather------------------------>
 	<div id ="weather" class="row justify-content-center my-3" data-bs-toggle="collapse" href="#hourly"></div>
 
+	<!-----------------------Collapsable div holds hourly weather info------------------------>
 	<div class="collapse row justify-content-center mb-4" id="hourly">
 		<div class="col-8" id="hour"></div>
 	</div>
 
+	<!-----------------------div holds map------------------------>
 	<div id ="map"></div>
 
-	<label for="searchCity"></label>
-	<input class="my-1 w-25" type="text" name="searchAddress" id="searchCity" placeholder="Enter City"><br>
-	<button id="submit" class="w-25 ms-1">Search</button>
-
+	<!-----------------------div holds search input and search button------------------------>
+	<div>
+		<label for="searchCity"></label>
+		<input class="my-1 w-25" type="text" name="searchAddress" id="searchCity" placeholder="Enter City"><br>
+		<button id="submit" class="w-25 ms-1">Search</button>
+	</div>
 
 
 	<script src="js/keys.js"></script>
