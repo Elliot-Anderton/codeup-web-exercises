@@ -59,9 +59,10 @@
 	// console.log(longestEmail);
 
 	const stringOfNames = users.reduce((names, user) => {
-		return names + `${user.name}, `;
-	}, '');
-	// console.log(stringOfNames);
+		names.push(user.name);
+		return names;
+	}, []);
+	// console.log(stringOfNames.join(`, `));
 
 	const uniqueLanguages = users.reduce((arr, user) => {
 		for (let lang of user.languages) {
@@ -72,7 +73,7 @@
 		return arr
 	}, [])
 
-	console.log(uniqueLanguages)
+	// console.log(uniqueLanguages)
 
 	// const unique =
 })();
